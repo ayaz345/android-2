@@ -7,20 +7,20 @@ def get_counts(tree):
     category_counts = {}
     category_names = {}
     for child in tree.getroot():
-        if child.tag == "BugInstance":
-            category = child.attrib['category']
-            if category in category_counts:
-                category_counts[category] = category_counts[category] + 1
-            else:
-                category_counts[category] = 1
-        elif child.tag == "BugCategory":
-            category = child.attrib['category']
-            category_names[category] = child[0].text
+        if child.tag == "BugCategory":
+            category_names[child.attrib['category']] = child[0].text
 
-    summary = {}
-    for category in category_counts.keys():
-        summary[category_names[category]] = category_counts[category]
-    return summary
+        elif child.tag == "BugInstance":
+            category = child.attrib['category']
+            category_counts[category] = (
+                category_counts[category] + 1
+                if category in category_counts
+                else 1
+            )
+    return {
+        category_names[category]: category_counts[category]
+        for category in category_counts
+    }
 
 
 def print_html(summary):

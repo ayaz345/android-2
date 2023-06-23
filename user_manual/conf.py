@@ -30,7 +30,7 @@ scriptpath = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 extensions = ['sphinx.ext.todo']
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = [scriptpath+'/ocdoc/_shared_assets/templates']
+templates_path = [f'{scriptpath}/ocdoc/_shared_assets/templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -47,7 +47,7 @@ version = '1.0.0'
 release = '1.0.0'
 
 # General information about the project.
-project = u'Nextcloud Android App %s Manual' % (version)
+project = f'Nextcloud Android App {version} Manual'
 copyright = u'2016, The Nextcloud developers'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -97,7 +97,7 @@ pygments_style = 'sphinx'
 #html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = [scriptpath+'/ocdoc/_shared_assets/themes']
+html_theme_path = [f'{scriptpath}/ocdoc/_shared_assets/themes']
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
@@ -122,7 +122,7 @@ html_short_title = "Android App Manual"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = [scriptpath+'/ocdoc/_shared_assets/static']
+html_static_path = [f'{scriptpath}/ocdoc/_shared_assets/static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.

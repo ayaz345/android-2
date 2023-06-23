@@ -15,8 +15,8 @@ def print_comparison(old: dict, new: dict, link_base: str, link_new: str):
     output += "</tr>"
 
     for category in all_keys:
-        category_count_old = old[category] if category in old else 0
-        category_count_new = new[category] if category in new else 0
+        category_count_old = old.get(category, 0)
+        category_count_new = new.get(category, 0)
         new_str = f"<b>{category_count_new}</b>" if category_count_new != category_count_old else str(category_count_new)
         output += "<tr>"
         output += f"<td>{category}</td>"

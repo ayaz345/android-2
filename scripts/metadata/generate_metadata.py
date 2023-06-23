@@ -70,12 +70,12 @@ def main():
             continue
         strings_file = os.path.join(directory, 'strings.xml')
         if not os.path.isfile(strings_file):
-            print("Error: %s does not exist" % strings_file)
+            print(f"Error: {strings_file} does not exist")
             continue
 
         print()
         print(LANG_MAP[entry])
-        print("Parsing %s..." % strings_file)
+        print(f"Parsing {strings_file}...")
         e = ElementTree.parse(strings_file).getroot()
         short_desc = e.find('.//string[@name="store_short_desc"]')
         full_desc = e.find('.//string[@name="store_full_desc"]')
@@ -99,14 +99,11 @@ def save_file(text, directory, filename, dev):
 
     if not os.path.exists(directory_path):
         os.makedirs(directory_path)
-    if filename == 'short_description.txt':
-        limit = 80
-    else:
-        limit = 0
+    limit = 80 if filename == 'short_description.txt' else 0
     text = clean_text(text, limit)
     check_title(directory_path)
     file_path = os.path.join(directory_path, filename)
-    print("Writing %s..." % file_path)
+    print(f"Writing {file_path}...")
     with codecs.open(file_path, 'w', 'utf-8') as f:
         f.write(text)
 
